@@ -1,0 +1,59 @@
+import UIKit
+
+class ViewController: UIViewController {
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var weekdayLabel: UILabel!
+    @IBOutlet weak var minutesLeft: UILabel!
+    
+    let clock = Clock()
+    var timer: Timer?
+    let date = Date()
+    let formatter = DateFormatter()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(ViewController.updatetimeLabel), userInfo: nil, repeats: true)
+    }
+    
+    //Similar to an initializer
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updatetimeLabel()
+    }
+
+    @objc func updatetimeLabel() {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .medium
+        let Time = formatter.string(from: clock.currentTime as Date)
+        //timeLabel.text! = Time
+       
+        formatter.dateFormat = "EEEE"
+        let Weekday = formatter.string(from: date)
+      //  weekdayLabel.text! = Weekday
+        
+        switch Weekday {
+            case "Sunday":
+                if (Time > 10) {
+                weekdayLabel.text = "The time is"
+            }
+            default: weekdayLabel.text = "Sunday"
+        }
+    }
+    
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.all
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    //De-initializer
+    deinit {
+        if let timer = self.timer {
+            timer.invalidate()
+        }
+    }
+    
+}
