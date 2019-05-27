@@ -1,0 +1,268 @@
+//
+//  ViewController.swift
+//  SwipeTime
+//
+//  Created by Aliza Meller on 5/26/19.
+//  Copyright © 2019 Aliza Meller. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var weekdayLabel: UILabel!
+    @IBOutlet weak var minutesLeft: UILabel!
+    
+    var timer: Timer?
+    let date = Date()
+    let calendar = Calendar.current
+    let formatter = DateFormatter()
+    let dateFormatter : DateFormatter = DateFormatter()
+    var currentTime: Date {
+        return Date()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(ViewController.updatetimeLabel), userInfo: nil, repeats: true)
+    }
+    
+    //Similar to an initializer
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+       updatetimeLabel()
+    }
+    
+    
+    @objc func updatetimeLabel() {
+        formatter.timeStyle = .short
+        let Time = formatter.string(from: currentTime as Date)
+         timeLabel.text! = Time
+       
+        formatter.dateFormat = "EEEE"
+        let Weekday = formatter.string(from: date as Date)
+        weekdayLabel.text! = Weekday
+        
+        let time = Time
+       // Monday Schedule
+        let Mperiod1start = "9:05 AM"
+        let Mperiod1end = "9:45 AM"
+        let Mperiod2start = "9:48 AM"
+        let Mperiod2end = "10:28 AM"
+        let Mperiod3start = "10:31 AM" //Check Period 3
+        let Mperiod3end = "11:11 AM"
+        let Mperiod4start = "11:14 AM"
+        let Mperiod4end = "11: 54 AM"
+        let Mperiod5start = "11:57 AM"
+        let Mperiod5end = "12:37 PM"
+        let Mperiod6start = "12:39 PM"
+        let Mperiod6end = "1:18 PM"
+        let Mperiod7start = "1:20 PM" //Check Period 7
+        let Mperiod7end = "1:59 PM"
+        let Mperiod8start = "2:01 PM"
+        let Mperiod8end = "2:41 PM"
+        let Mperiod9start = "2:44 PM"
+        let Mperiod9end = "3:24PM"
+        let Mperiod10Astart = "3:27 PM"
+        let Mperiod10Aend = "3:45 PM"
+        let Mperiod10Bstart = "3:47 PM"
+        let Mperiod10Bend = "4:28 PM"
+        let Mperiod11start = "4:31 PM"
+        let Mperiod11end = "5:10 PM"
+        
+        
+        //Tuesday Schedule
+        
+        
+      switch Weekday {
+            case "Monday":
+                if  Time > Mperiod1start && Time < Mperiod1end {
+                        let formatter = DateFormatter()
+                        formatter.dateFormat = "h:mma"
+                        
+                        let date1 = formatter.date(from: time)!
+                        let dateMperiod1end = formatter.date(from: Mperiod1end)!
+                        
+                        let elapsedTime = dateMperiod1end.timeIntervalSince(date1)
+                        let hours = floor(elapsedTime / 60 / 60)
+                        let minutes = floor((elapsedTime - (hours * 60 * 60)) / 60)
+                        
+                        minutesLeft.text = ("\(Int(hours)) hr and \(Int(minutes)) min")
+                    } else {
+                        if Time > Mperiod2start && Time < Mperiod2end {
+                            let formatter = DateFormatter()
+                            formatter.dateFormat = "h:mma"
+                            
+                            let date1 = formatter.date(from: time)!
+                            let dateMperiod2 = formatter.date(from: Mperiod2end)!
+                            
+                            let elapsedTime = dateMperiod2.timeIntervalSince(date1)
+                            let hours = floor(elapsedTime / 60 / 60)
+                            let minutes = floor((elapsedTime - (hours * 60 * 60)) / 60)
+                            
+                            minutesLeft.text = ("\(Int(hours)) hr and \(Int(minutes)) min")
+                        } else {
+                            if Time > Mperiod3start && Time < Mperiod3end {
+                                let formatter = DateFormatter()
+                                formatter.dateFormat = "h:mma"
+                                
+                                let date1 = formatter.date(from: time)!
+                                let dateMperiod3end = formatter.date(from: Mperiod3end)!
+                                
+                                let elapsedTime = dateMperiod3end.timeIntervalSince(date1)
+                                let hours = floor(elapsedTime / 60 / 60)
+                                let minutes = floor((elapsedTime - (hours * 60 * 60)) / 60)
+                                
+                                minutesLeft.text = ("\(Int(hours)) hr and \(Int(minutes)) min")
+                            } else {
+                                if Time > Mperiod4start && Time < Mperiod4end {
+                                    let formatter = DateFormatter()
+                                    formatter.dateFormat = "h:mma"
+                                    
+                                    let date1 = formatter.date(from: time)!
+                                    let dateMperiod4end = formatter.date(from: Mperiod4end)!
+                                    
+                                    let elapsedTime = dateMperiod4end.timeIntervalSince(date1)
+                                    let hours = floor(elapsedTime / 60 / 60)
+                                    let minutes = floor((elapsedTime - (hours * 60 * 60)) / 60)
+                                    
+                                    minutesLeft.text = ("\(Int(hours)) hr and \(Int(minutes)) min")
+                                } else {
+                                    if Time > Mperiod5start && Time < Mperiod5end {
+                                        let formatter = DateFormatter()
+                                        formatter.dateFormat = "h:mma"
+                                        
+                                        let date1 = formatter.date(from: time)!
+                                        let dateMperiod5end = formatter.date(from: Mperiod5end)!
+                                        
+                                        let elapsedTime = dateMperiod5end.timeIntervalSince(date1)
+                                        let hours = floor(elapsedTime / 60 / 60)
+                                        let minutes = floor((elapsedTime - (hours * 60 * 60)) / 60)
+                                        
+                                        minutesLeft.text = ("\(Int(hours)) hr and \(Int(minutes)) min")
+                                    } else {
+                                        if Time > Mperiod6start && Time < Mperiod6end {
+                                            let formatter = DateFormatter()
+                                            formatter.dateFormat = "h:mma"
+                                            
+                                            let date1 = formatter.date(from: time)!
+                                            let dateMperiod6end = formatter.date(from: Mperiod6end)!
+                                            
+                                            let elapsedTime = dateMperiod6end.timeIntervalSince(date1)
+                                            let hours = floor(elapsedTime / 60 / 60)
+                                            let minutes = floor((elapsedTime - (hours * 60 * 60)) / 60)
+                                            
+                                            minutesLeft.text = ("\(Int(hours)) hr and \(Int(minutes)) min")
+                                        } else {
+                                            if Time > Mperiod7start && Time < Mperiod7end {
+                                                let formatter = DateFormatter()
+                                                formatter.dateFormat = "h:mma"
+                                                
+                                                let date1 = formatter.date(from: time)!
+                                                let dateMperiod7end = formatter.date(from: Mperiod7end)!
+                                                
+                                                let elapsedTime = dateMperiod7end.timeIntervalSince(date1)
+                                                let hours = floor(elapsedTime / 60 / 60)
+                                                let minutes = floor((elapsedTime - (hours * 60 * 60)) / 60)
+                                                
+                                                minutesLeft.text = ("\(Int(hours)) hr and \(Int(minutes)) min")
+                                            } else {
+                                                if Time > Mperiod8start && Time < Mperiod8end {
+                                                    let formatter = DateFormatter()
+                                                    formatter.dateFormat = "h:mma"
+                                                    
+                                                    let date1 = formatter.date(from: time)!
+                                                    let dateMperiod8end = formatter.date(from: Mperiod8end)!
+                                                    
+                                                    let elapsedTime = dateMperiod8end.timeIntervalSince(date1)
+                                                    let hours = floor(elapsedTime / 60 / 60)
+                                                    let minutes = floor((elapsedTime - (hours * 60 * 60)) / 60)
+                                                    
+                                                    minutesLeft.text = ("\(Int(hours)) hr and \(Int(minutes)) min")
+                                                } else {
+                                                    if Time > Mperiod9start && Time < Mperiod9end {
+                                                        let formatter = DateFormatter()
+                                                        formatter.dateFormat = "h:mma"
+                                                        
+                                                        let date1 = formatter.date(from: time)!
+                                                        let dateMperiod9end = formatter.date(from: Mperiod9end)!
+                                                        
+                                                        let elapsedTime = dateMperiod9end.timeIntervalSince(date1)
+                                                        let hours = floor(elapsedTime / 60 / 60)
+                                                        let minutes = floor((elapsedTime - (hours * 60 * 60)) / 60)
+                                                        
+                                                        minutesLeft.text = ("\(Int(hours)) hr and \(Int(minutes)) min")
+                                                    } else {
+                                                        if Time > Mperiod10Astart && Time < Mperiod10Aend {
+                                                            let formatter = DateFormatter()
+                                                            formatter.dateFormat = "h:mma"
+                                                            
+                                                            let date1 = formatter.date(from: time)!
+                                                            let dateMperiod10Aend = formatter.date(from: Mperiod10Aend)!
+                                                            
+                                                            let elapsedTime = dateMperiod10Aend.timeIntervalSince(date1)
+                                                            let hours = floor(elapsedTime / 60 / 60)
+                                                            let minutes = floor((elapsedTime - (hours * 60 * 60)) / 60)
+                                                            
+                                                            minutesLeft.text = ("\(Int(hours)) hr and \(Int(minutes)) min")
+                                                        } else {
+                                                            if Time > Mperiod10Bstart && Time < Mperiod10Bend {
+                                                                let formatter = DateFormatter()
+                                                                formatter.dateFormat = "h:mma"
+                                                                
+                                                                let date1 = formatter.date(from: time)!
+                                                                let dateMperiod10Bend = formatter.date(from: Mperiod10Bend)!
+                                                                
+                                                                let elapsedTime = dateMperiod10Bend.timeIntervalSince(date1)
+                                                                let hours = floor(elapsedTime / 60 / 60)
+                                                                let minutes = floor((elapsedTime - (hours * 60 * 60)) / 60)
+                                                                
+                                                                minutesLeft.text = ("\(Int(hours)) hr and \(Int(minutes)) min")
+                                                            } else {
+                                                                if Time > Mperiod11start && Time < Mperiod11end {
+                                                                    let formatter = DateFormatter()
+                                                                    formatter.dateFormat = "h:mma"
+                                                                    
+                                                                    let date1 = formatter.date(from: time)!
+                                                                    let dateMperiod11end = formatter.date(from: Mperiod11end)!
+                                                                    
+                                                                    let elapsedTime = dateMperiod11end.timeIntervalSince(date1)
+                                                                    let hours = floor(elapsedTime / 60 / 60)
+                                                                    let minutes = floor((elapsedTime - (hours * 60 * 60)) / 60)
+                                                                    
+                                                                    minutesLeft.text = ("\(Int(hours)) hr and \(Int(minutes)) min")
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+        
+            default: minutesLeft.text = "No Class!"
+        }
+    }
+    
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.all
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    //De-initializer
+    deinit {
+        if let timer = self.timer {
+            timer.invalidate()
+        }
+    }
+    
+}
+
